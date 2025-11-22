@@ -1,0 +1,2 @@
+you have to download wamp server for this 
+Minimum version 2.4 wamp
