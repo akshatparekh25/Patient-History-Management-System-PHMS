@@ -1,0 +1,53 @@
+1. PATIENT: Stores general patient information.		(16)
+   - PatientID (Primary Key) 				- Integer(4)		Auto_Increment
+   - FirstName					- Varchar(20)
+   - LastName					- Varchar(15)
+   - DateOfBirth					- Date
+   - Gender					- Char(1)			M/F/O
+   - ContactNumber					- Varchar(15)
+   - Email						- Varchar(30)
+   - Address					- Varchar(50)
+   - City						- Varchar(20)
+   - Insured					- Char(1)			Y/N
+   - InsuranceCompany				- Varchar(50)
+   - ReferredBy					- Varchar(50)
+   - FirstVisitDate					- Date
+  ***REMOVE - LastVisitDate					- Date
+   - AllergicTo					- Varchar(30)
+   - History						- Varchar(250)
+
+2. HISTORY: Records patient's medical history.		(08)
+   - HistoryID (Primary Key)				- Integer(5)		Auto_Increment
+   - VisitID (Foreign Key - VISIT)				- Integer(5)
+   - Diagnosis					- Varchar(50)		
+   - DiagnosisDate					- Date
+   - Observation					- Varchar(100)
+   - Treatment					- Varchar(100)
+   - LabTest					- Varchar(50)
+   - Notes						- Varchar(100)
+
+3. DOCTOR: Contains information about doctors.		(07)
+   - DoctorID (Primary Key)				- Integer(3)		Auto_Increment
+   - FirstName					- Varchar(20)
+   - LastName					- Varchar(15)
+   - Specialization					- Varchar(30)
+   - ContactNumber					- Varchar(15)
+   - Email						- Varchar(30)
+   - Availability					- Varchar(50)
+
+4. PRESCRIPTION: Manages prescription details.		(04)
+   - PrescriptionID (Primary Key)			- Integer(5)		Auto_Increment
+   - HistoryID (Foreign Key - HISTORY)			- Integer(5)
+   - Medicine					- Varchar(250)
+   - Instruction					- Varchar(250)
+
+5. VISIT: Logs patient visits and consultations.		(08)
+   - VisitID (Primary Key)				- Integer(5)		Auto_Increment
+   - PatientID (Foreign Key - PATIENT)			- Integer(4)
+   - DoctorID (Foreign Key - DOCTOR)			- Integer(3)
+   - VisitDateTime					- TimeStamp		Default Current_Timestamp
+   - CaseFee					- Integer(3)
+   - VisitCategory 					- Char(1)			S/E/C/R/O
+   - CaseFeeType (New, Renew, Special, Consult, Other)		- Char(1)			N/R/S/C/O
+						(Scheduled Visit, Emergency, Consultation, Referred Visit, Other)	
+   - Notes						- Varchar(20)
